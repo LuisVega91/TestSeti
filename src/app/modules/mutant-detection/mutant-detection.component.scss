@@ -1,18 +1,22 @@
-.button-matrix {
+.dna-table {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    grid-gap: 10px;
+    grid-gap: 1em;
     margin: 20px;
-}
-
-.mat-success {
-  background-color: teal !important;
-  color: #fff !important;
+    overflow: auto;
 }
 
 .nitrogenous-base-picker{
+  align-items: center;
   display: flex;
+  gap: 1em;
   justify-content: center;
-  gap: 20px;
   width: 100vw;
+}
+
+.footer{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }

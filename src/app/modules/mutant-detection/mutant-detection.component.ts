@@ -1,12 +1,18 @@
 import { Component } from '@angular/core';
 import { isMutant } from './mutantValidation';
 
-enum NitrogenousBase {
+export enum NITROGENOUS_BASES {
   A = 'A',
   T = 'T',
   G = 'G',
   C = 'C',
-  NONE = 'NONE'
+}
+
+export const NITROGENOUS_BASES_COLOR = {
+  A: 'primary',
+  T: 'accent',
+  G: 'warn',
+  C: 'success',
 }
 
 @Component({
@@ -15,39 +21,37 @@ enum NitrogenousBase {
   styleUrls: ['./mutant-detection.component.scss']
 })
 export class MutantDetectionComponent {
-  NitrogenousBase = NitrogenousBase
-  nitrogenousBaseSelected: NitrogenousBase = NitrogenousBase.A;
-  isMutan?: boolean;
+  protected nitrogenousBasesNames = [
+    NITROGENOUS_BASES.A, 
+    NITROGENOUS_BASES.T, 
+    NITROGENOUS_BASES.G, 
+    NITROGENOUS_BASES.C
+  ]
+  public nitrogenousBaseSelected: NITROGENOUS_BASES = NITROGENOUS_BASES.A;
+  public isMutan?: boolean;
 
-  matrix: NitrogenousBase[][] = [
-    [NitrogenousBase.A, NitrogenousBase.T, NitrogenousBase.G, NitrogenousBase.C, NitrogenousBase.G, NitrogenousBase.A],
-    [NitrogenousBase.C, NitrogenousBase.A, NitrogenousBase.G, NitrogenousBase.T, NitrogenousBase.G, NitrogenousBase.C],
-    [NitrogenousBase.T, NitrogenousBase.T, NitrogenousBase.A, NitrogenousBase.T, NitrogenousBase.T, NitrogenousBase.T],
-    [NitrogenousBase.A, NitrogenousBase.G, NitrogenousBase.A, NitrogenousBase.C, NitrogenousBase.G, NitrogenousBase.G],
-    [NitrogenousBase.G, NitrogenousBase.C, NitrogenousBase.G, NitrogenousBase.T, NitrogenousBase.C, NitrogenousBase.A],
-    [NitrogenousBase.T, NitrogenousBase.C, NitrogenousBase.A, NitrogenousBase.C, NitrogenousBase.T, NitrogenousBase.G],
+  dna: NITROGENOUS_BASES[][] = [
+    [NITROGENOUS_BASES.A, NITROGENOUS_BASES.T, NITROGENOUS_BASES.G, NITROGENOUS_BASES.C, NITROGENOUS_BASES.G, NITROGENOUS_BASES.A],
+    [NITROGENOUS_BASES.C, NITROGENOUS_BASES.A, NITROGENOUS_BASES.G, NITROGENOUS_BASES.T, NITROGENOUS_BASES.G, NITROGENOUS_BASES.C],
+    [NITROGENOUS_BASES.T, NITROGENOUS_BASES.T, NITROGENOUS_BASES.A, NITROGENOUS_BASES.T, NITROGENOUS_BASES.T, NITROGENOUS_BASES.T],
+    [NITROGENOUS_BASES.A, NITROGENOUS_BASES.G, NITROGENOUS_BASES.A, NITROGENOUS_BASES.C, NITROGENOUS_BASES.G, NITROGENOUS_BASES.G],
+    [NITROGENOUS_BASES.G, NITROGENOUS_BASES.C, NITROGENOUS_BASES.G, NITROGENOUS_BASES.T, NITROGENOUS_BASES.C, NITROGENOUS_BASES.A],
+    [NITROGENOUS_BASES.T, NITROGENOUS_BASES.C, NITROGENOUS_BASES.A, NITROGENOUS_BASES.C, NITROGENOUS_BASES.T, NITROGENOUS_BASES.G],
   ] ;
 
-  setNitrogenousBaseSelected(nitrogenousBase: NitrogenousBase){
+  setNitrogenousBaseSelected(nitrogenousBase: NITROGENOUS_BASES){
     this.nitrogenousBaseSelected = nitrogenousBase;
   }
 
   setValue(indexCol: number,IndexRow: number){
-    this.matrix[indexCol][IndexRow] = this.nitrogenousBaseSelected ;
+    this.dna[indexCol][IndexRow] = this.nitrogenousBaseSelected ;
   }
 
-  getColorByNitrogenousBase(NitrogenousBase: NitrogenousBase): string {
-    const colorsByNitrogenousBase = {
-      A: 'primary',
-      T: 'accent',
-      G: 'warn',
-      C: 'success',
-      NONE: ''
-    }
-    return colorsByNitrogenousBase[NitrogenousBase];
+  getColorByNitrogenousBase(nitrogenousBase: NITROGENOUS_BASES): string {
+    return NITROGENOUS_BASES_COLOR[nitrogenousBase];
   }
 
   validateMutant(){
-    this.isMutan = isMutant(this.matrix.map(row => row.join('')))
+    this.isMutan = isMutant(this.dna.map(row => row.join('')))
   }
 }

@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MutantDetectionComponent } from './mutant-detection.component';
+import { MatButtonModule } from '@angular/material/button';
 
 describe('MutantDetectionComponent', () => {
   let component: MutantDetectionComponent;
@@ -8,7 +9,9 @@ describe('MutantDetectionComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [MutantDetectionComponent]
+      declarations: [MutantDetectionComponent],
+      imports: [MatButtonModule]
+
     });
     fixture = TestBed.createComponent(MutantDetectionComponent);
     component = fixture.componentInstance;
@@ -18,4 +21,5 @@ describe('MutantDetectionComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });

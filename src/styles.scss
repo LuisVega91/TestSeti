@@ -26,3 +26,8 @@ $custom-theme: mat-light-theme(
 );
 
 @include angular-material-theme($custom-theme);
+
+.mat-success{
+  background-color: teal !important;
+  color: #fff !important;
+}
