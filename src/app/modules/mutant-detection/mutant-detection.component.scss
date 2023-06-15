@@ -1,0 +1,18 @@
+.button-matrix {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 10px;
+    margin: 20px;
+}
+
+.mat-success {
+  background-color: teal !important;
+  color: #fff !important;
+}
+
+.nitrogenous-base-picker{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  width: 100vw;
+}

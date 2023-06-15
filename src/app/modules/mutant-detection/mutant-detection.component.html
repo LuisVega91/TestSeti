@@ -1,0 +1,24 @@
+<h1>Mutant Detection</h1>
+
+
+
+<div class="nitrogenous-base-picker">
+    <button mat-raised-button color="primary" (click)="setNitrogenousBaseSelected(NitrogenousBase.A)">A</button>
+    <button mat-raised-button color="accent" (click)="setNitrogenousBaseSelected(NitrogenousBase.T)">T</button>
+    <button mat-raised-button color="warn" (click)="setNitrogenousBaseSelected(NitrogenousBase.G)">G</button>
+    <button mat-raised-button color="success" (click)="setNitrogenousBaseSelected(NitrogenousBase.C)">C</button>
+</div>
+
+<div class="button-matrix">
+    <ng-container *ngFor="let row of matrix; let indexCol = index">
+        <ng-container *ngFor="let item of row; let IndexRow = index">
+            <button mat-raised-button [color]="getColorByNitrogenousBase(item)" (click)="setValue(indexCol,IndexRow)">
+                {{ item }}
+            </button>
+        </ng-container>
+    </ng-container>
+</div>
+
+<button mat-raised-button (click)="validateMutant()">Validate</button>
+
+<p >{{isMutan?'true':'false'}}</p>
