@@ -1,4 +1,4 @@
-export function isMutant(dna: string[]): boolean {
+export function mutantChecker(dna: string[]): boolean {
     const n: number = dna.length;
     const sequenceLength: number = 4;
 

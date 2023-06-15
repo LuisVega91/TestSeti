@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { isMutant } from './mutantValidation';
+import { mutantChecker } from './mutantValidation';
 
 export enum NITROGENOUS_BASES {
   A = 'A',
@@ -21,14 +21,15 @@ export const NITROGENOUS_BASES_COLOR = {
   styleUrls: ['./mutant-detection.component.scss']
 })
 export class MutantDetectionComponent {
-  protected nitrogenousBasesNames = [
+  public mutantChecker = mutantChecker;
+  public nitrogenousBasesNames = [
     NITROGENOUS_BASES.A, 
     NITROGENOUS_BASES.T, 
     NITROGENOUS_BASES.G, 
     NITROGENOUS_BASES.C
   ]
   public nitrogenousBaseSelected: NITROGENOUS_BASES = NITROGENOUS_BASES.A;
-  public isMutan?: boolean;
+  public isMutant?: boolean;
 
   dna: NITROGENOUS_BASES[][] = [
     [NITROGENOUS_BASES.A, NITROGENOUS_BASES.T, NITROGENOUS_BASES.G, NITROGENOUS_BASES.C, NITROGENOUS_BASES.G, NITROGENOUS_BASES.A],
@@ -52,6 +53,6 @@ export class MutantDetectionComponent {
   }
 
   validateMutant(){
-    this.isMutan = isMutant(this.dna.map(row => row.join('')))
+    this.isMutant = this.mutantChecker(this.dna.map(row => row.join('')))
   }
 }
