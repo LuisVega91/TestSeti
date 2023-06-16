@@ -1,27 +1,56 @@
-# TestSeti
+## Prueba de Desarrollador Frontend SETI
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.0.
+Este proyecto de Angular verifica si una persona es o no mutante, basado en la matriz de ADN que ingrese el usuario. La verificación se realiza mediante el análisis de secuencias de cuatro letras iguales (A, C, G, T) en filas, columnas y diagonales de la matriz de ADN.
 
-## Development server
+### Instalación
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Para instalar el proyecto, simplemente clona este repositorio y luego ejecuta el siguiente comando en la raíz del proyecto:
 
-## Code scaffolding
+```sh
+npm install
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Este comando instalará todas las dependencias necesarias para ejecutar el proyecto.
 
-## Build
+### Uso
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Para ejecutar el proyecto, debes ejecutar el siguiente comando en la raíz del proyecto:
 
-## Running unit tests
+```sh
+ng serve
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Este comando compilará y ejecutará el proyecto en el navegador. Luego, puedes acceder a la aplicación ingresando la siguiente URL en tu navegador:
 
-## Running end-to-end tests
+```
+http://localhost:4200/
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Acerca del Proyecto
 
-## Further help
+Este proyecto de Angular verifica si una persona es o no mutante, basado en la matriz de ADN que ingrese el usuario. La verificación se realiza mediante el análisis de secuencias de cuatro letras iguales (A, C, G, T) en filas, columnas y diagonales de la matriz de ADN.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Tecnologías Utilizadas
+
+Este proyecto fue construido utilizando Angular y TypeScript.
+
+### Habilidades Relevantes y Experiencia
+
+- Competente en Angular
+- Fuerte comprensión de TypeScript
+- Experiencia con HTML, CSS y JavaScript
+- Familiaridad con Git y control de versiones
+- Familiaridad con metodologías de desarrollo ágil
+
+### Proyectos Previos
+
+Aquí hay algunos ejemplos de proyectos previos en los que he trabajado utilizando Angular:
+
+- [music suggestion app front](https://github.com/LuisVega91/-TektonLabsTestFront)
+- [music suggestion app back](https://github.com/LuisVega91/TektonLabsTest)
+
+No dudes en contactarme si tienes alguna pregunta o si deseas discutir mis calificaciones más a fondo. Gracias por considerar mi solicitud.
+
+### Créditos
+
+La implementación del algoritmo de verificación de mutantes se basa en la propuesta de [Magnus Manske](https://en.wikipedia.org/wiki/User:Magnus_Manske) en [Wikipedia](https://en.wikipedia.org/wiki/Mutant_(genetics)#DNA_sequence_analysis).
