@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { mutantChecker } from './mutantValidation';
+import { MutantValidator } from './mutant-validator';
 
 export enum NITROGENOUS_BASES {
   A = 'A',
@@ -15,13 +15,21 @@ export const NITROGENOUS_BASES_COLOR = {
   C: 'success',
 }
 
+const defaultDna = [
+  [NITROGENOUS_BASES.A, NITROGENOUS_BASES.T, NITROGENOUS_BASES.G, NITROGENOUS_BASES.C, NITROGENOUS_BASES.G, NITROGENOUS_BASES.A],
+  [NITROGENOUS_BASES.C, NITROGENOUS_BASES.A, NITROGENOUS_BASES.G, NITROGENOUS_BASES.T, NITROGENOUS_BASES.G, NITROGENOUS_BASES.C],
+  [NITROGENOUS_BASES.T, NITROGENOUS_BASES.T, NITROGENOUS_BASES.A, NITROGENOUS_BASES.T, NITROGENOUS_BASES.T, NITROGENOUS_BASES.T],
+  [NITROGENOUS_BASES.A, NITROGENOUS_BASES.G, NITROGENOUS_BASES.A, NITROGENOUS_BASES.C, NITROGENOUS_BASES.G, NITROGENOUS_BASES.G],
+  [NITROGENOUS_BASES.G, NITROGENOUS_BASES.C, NITROGENOUS_BASES.G, NITROGENOUS_BASES.T, NITROGENOUS_BASES.C, NITROGENOUS_BASES.A],
+  [NITROGENOUS_BASES.T, NITROGENOUS_BASES.C, NITROGENOUS_BASES.A, NITROGENOUS_BASES.C, NITROGENOUS_BASES.T, NITROGENOUS_BASES.G],
+]
+
 @Component({
   selector: 'app-mutant-detection',
   templateUrl: './mutant-detection.component.html',
   styleUrls: ['./mutant-detection.component.scss']
 })
 export class MutantDetectionComponent {
-  public mutantChecker = mutantChecker;
   public nitrogenousBasesNames = [
     NITROGENOUS_BASES.A, 
     NITROGENOUS_BASES.T, 
@@ -31,14 +39,7 @@ export class MutantDetectionComponent {
   public nitrogenousBaseSelected: NITROGENOUS_BASES = NITROGENOUS_BASES.A;
   public isMutant?: boolean;
 
-  dna: NITROGENOUS_BASES[][] = [
-    [NITROGENOUS_BASES.A, NITROGENOUS_BASES.T, NITROGENOUS_BASES.G, NITROGENOUS_BASES.C, NITROGENOUS_BASES.G, NITROGENOUS_BASES.A],
-    [NITROGENOUS_BASES.C, NITROGENOUS_BASES.A, NITROGENOUS_BASES.G, NITROGENOUS_BASES.T, NITROGENOUS_BASES.G, NITROGENOUS_BASES.C],
-    [NITROGENOUS_BASES.T, NITROGENOUS_BASES.T, NITROGENOUS_BASES.A, NITROGENOUS_BASES.T, NITROGENOUS_BASES.T, NITROGENOUS_BASES.T],
-    [NITROGENOUS_BASES.A, NITROGENOUS_BASES.G, NITROGENOUS_BASES.A, NITROGENOUS_BASES.C, NITROGENOUS_BASES.G, NITROGENOUS_BASES.G],
-    [NITROGENOUS_BASES.G, NITROGENOUS_BASES.C, NITROGENOUS_BASES.G, NITROGENOUS_BASES.T, NITROGENOUS_BASES.C, NITROGENOUS_BASES.A],
-    [NITROGENOUS_BASES.T, NITROGENOUS_BASES.C, NITROGENOUS_BASES.A, NITROGENOUS_BASES.C, NITROGENOUS_BASES.T, NITROGENOUS_BASES.G],
-  ] ;
+  dna: NITROGENOUS_BASES[][] = [...defaultDna.map(nitrogenousBase => [...nitrogenousBase])];
 
   setNitrogenousBaseSelected(nitrogenousBase: NITROGENOUS_BASES){
     this.nitrogenousBaseSelected = nitrogenousBase;
@@ -53,6 +54,10 @@ export class MutantDetectionComponent {
   }
 
   validateMutant(){
-    this.isMutant = this.mutantChecker(this.dna.map(row => row.join('')))
+    this.isMutant = new MutantValidator(this.dna).isMutant();
+  }
+
+  resetDna(){
+    this.dna = [...defaultDna.map(nitrogenousBase => [...nitrogenousBase])];
   }
 }

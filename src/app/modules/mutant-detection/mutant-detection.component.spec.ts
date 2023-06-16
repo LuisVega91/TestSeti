@@ -48,18 +48,9 @@ describe('MutantDetectionComponent', () => {
   });
 
   it('should validate mutant correctly', () => {
-    spyOn(component, 'mutantChecker').and.returnValue(true);
-
+    component.dna[0] = 'A'.repeat(6).split('') as NITROGENOUS_BASES[];
+    console.log(component.dna)
     component.validateMutant();
-
     expect(component.isMutant).toBe(true);
-    expect(component.mutantChecker).toHaveBeenCalledWith([
-      'ATGCGA',
-      'CAGTGC',
-      'TTATTT',
-      'AGACGG',
-      'GCGTCA',
-      'TCACTG',
-    ]);
   });
 });

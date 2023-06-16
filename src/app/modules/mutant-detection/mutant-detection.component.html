@@ -1,8 +1,9 @@
-<header>
+<header class="header">
     <h1>Mutant Detection</h1>
 </header>
-<main>
-    <section class="nitrogenous-base-picker">
+<main class="main">
+    
+    <section class="main__nitrogenous-base-picker">
         <ng-container *ngFor="let nitrogenousBase of nitrogenousBasesNames">
             <button
                 mat-fab
@@ -21,8 +22,9 @@
             </ng-template>
         </ng-container>
     </section>
+    <small>Nitrogenous Base Picker</small>
 
-    <section class="dna-table">
+    <section class="main__dna-table">
         <ng-container *ngFor="let row of dna; let indexCol = index">
             <ng-container *ngFor="let item of row; let IndexRow = index">
                 <button mat-raised-button 
@@ -33,15 +35,13 @@
             </ng-container>
         </ng-container>
     </section>
-
+    <small>DNA Matrix</small>
 </main>
 
 <footer class="footer">
-    <button mat-raised-button (click)="validateMutant()">Validate</button>
-    <h2 >{{isMutant?'Is Mutant':'Is Human'}}</h2>
+    <section class="footer__buttons">
+        <button mat-raised-button (click)="validateMutant()">Validate</button>
+        <button mat-mini-fab color="basic" (click)="resetDna()">↻</button>
+    </section>
+    <h2 >{{isMutant?'Is Mutant 🧟‍♂️':'Is Human 👨🏻‍💼'}}</h2>
 </footer>
-
-
-
-
-

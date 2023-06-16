@@ -1,22 +1,45 @@
-.dna-table {
+$margin-separation: 2em;
+$gap: 1em;
+
+.header {
+  display: flex;
+  justify-content: center;
+  margin-block: $margin-separation;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: $margin-separation;
+
+  &__nitrogenous-base-picker {
+    align-items: center;
+    display: flex;
+    gap: $gap;
+    justify-content: center;
+    width: 100vw;
+  }
+
+  &__dna-table {
+    margin-top: $margin-separation;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    grid-gap: 1em;
-    margin: 20px;
+    grid-gap: $gap;
     overflow: auto;
+  }
 }
 
-.nitrogenous-base-picker{
-  align-items: center;
-  display: flex;
-  gap: 1em;
-  justify-content: center;
-  width: 100vw;
-}
-
-.footer{
+.footer {
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: $gap;
+
+  &__buttons{
+    display: flex;
+    gap: $gap;
+    align-items: center;
+  }
+
 }
