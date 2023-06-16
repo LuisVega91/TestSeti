@@ -59,5 +59,6 @@ export class MutantDetectionComponent {
 
   resetDna(){
     this.dna = [...defaultDna.map(nitrogenousBase => [...nitrogenousBase])];
+    this.validateMutant();
   }
 }
