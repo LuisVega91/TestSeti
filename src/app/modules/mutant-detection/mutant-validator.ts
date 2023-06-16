@@ -52,7 +52,6 @@ export class MutantValidator {
     }
 
     hasMutantSubSequenceIn(subSequences: string[]): boolean {
-        console.log({subSequences})
         return subSequences.some(subSequence => MUTANT_SUBSEQUENCE.test(subSequence))
     }
 }
